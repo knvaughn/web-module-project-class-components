@@ -33,8 +33,32 @@ class App extends React.Component {
     })
   }
 
-  handleSubmit = () => {
+  handleSubmit = (item) => {
+    this.setState({
+      toDoList: [
+        ...this.state.toDoList,
+        {
+          task: item,
+          id: Date.now(),
+          completed: false
+        }
+      ],
+      toDoItem: ''
+    })
+  }
 
+  toggleCompleted = (itemId) => {
+    this.setState({
+      toDoList: this.state.toDoList.map(item => {
+        if (itemId === item.id) {
+          return {
+            ...item,
+            completed: !item.completed
+          }
+        }
+        return item;
+      })
+    })
   }
 
   handleClear = () => {
@@ -45,8 +69,15 @@ class App extends React.Component {
     return (
       <div>
         <h1>ToDo List:</h1>
-        <ToDoList toDoList={this.state.toDoList} />
-        <ToDoForm toDoItem={this.state.toDoItem} handleChange={this.handleChange} />
+        <ToDoList 
+          toDoList={this.state.toDoList} 
+          toggleCompleted={this.toggleCompleted}
+        />
+        <ToDoForm 
+          toDoItem={this.state.toDoItem} 
+          handleChange={this.handleChange} 
+          handleSubmit={this.handleSubmit} 
+        />
       </div>
     );
   }

@@ -5,6 +5,11 @@ class ToDoForm extends React.Component {
         super();
     }
 
+    submitForm = (event) => {
+        event.preventDefault();
+        this.props.handleSubmit(this.props.toDoItem)
+    }
+
     render() {
         return (
             <div>
@@ -14,7 +19,7 @@ class ToDoForm extends React.Component {
                         value={this.props.toDoItem}
                         onChange={this.props.handleChange}
                     />
-                    <button>Add ToDo</button>
+                    <button onClick={this.submitForm}>Add ToDo</button>
                     <button>Clear Completed</button>
                 </form>
             </div>

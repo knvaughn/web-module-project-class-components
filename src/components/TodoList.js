@@ -12,7 +12,7 @@ class ToDoList extends React.Component {
                 {
                     this.props.toDoList.map((toDo, index) => {
                         return (
-                            <ToDo toDo={toDo} key={index} />
+                            <ToDo toggleCompleted={this.props.toggleCompleted} toDo={toDo} key={index} />
                         )
                     })
                 }

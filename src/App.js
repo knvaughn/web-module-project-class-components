@@ -62,7 +62,11 @@ class App extends React.Component {
   }
 
   handleClear = () => {
-
+    this.setState({
+      toDoList: this.state.toDoList.filter(item => {
+        return !item.completed;
+      })
+    })
   }
 
   render() {
@@ -77,6 +81,7 @@ class App extends React.Component {
           toDoItem={this.state.toDoItem} 
           handleChange={this.handleChange} 
           handleSubmit={this.handleSubmit} 
+          handleClear={this.handleClear}
         />
       </div>
     );

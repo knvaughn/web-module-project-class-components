@@ -10,6 +10,11 @@ class ToDoForm extends React.Component {
         this.props.handleSubmit(this.props.toDoItem)
     }
 
+    clearCompleted = (event) => {
+        event.preventDefault();
+        this.props.handleClear();
+    }
+
     render() {
         return (
             <div>
@@ -20,7 +25,7 @@ class ToDoForm extends React.Component {
                         onChange={this.props.handleChange}
                     />
                     <button onClick={this.submitForm}>Add ToDo</button>
-                    <button>Clear Completed</button>
+                    <button onClick={this.clearCompleted}>Clear Completed</button>
                 </form>
             </div>
         )

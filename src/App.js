@@ -22,15 +22,31 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      toDoList: toDoListData
+      toDoList: toDoListData,
+      toDoItem: ''
     }
   }
+
+  handleChange = (event) => {
+    this.setState({
+      toDoItem: event.target.value
+    })
+  }
+
+  handleSubmit = () => {
+
+  }
+
+  handleClear = () => {
+
+  }
+
   render() {
     return (
       <div>
         <h1>ToDo List:</h1>
         <ToDoList toDoList={this.state.toDoList} />
-        <ToDoForm />
+        <ToDoForm toDoItem={this.state.toDoItem} handleChange={this.handleChange} />
       </div>
     );
   }

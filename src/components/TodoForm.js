@@ -8,7 +8,15 @@ class ToDoForm extends React.Component {
     render() {
         return (
             <div>
-
+                <form>
+                    <input 
+                        type="text"
+                        value={this.props.toDoItem}
+                        onChange={this.props.handleChange}
+                    />
+                    <button>Add ToDo</button>
+                    <button>Clear Completed</button>
+                </form>
             </div>
         )
     }
